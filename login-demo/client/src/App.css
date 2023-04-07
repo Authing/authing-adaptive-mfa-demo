@@ -1,18 +1,18 @@
 body {
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   position: relative;
   height: 100vh;
-  background-image: url('https://i.328888.xyz/2023/03/27/inttTC.jpeg'); /* 替换为您的背景图片 URL */
+  /* background-image: url('https://i.328888.xyz/2023/03/27/inttTC.jpeg'); 替换为您的背景图片 URL */
   background-position: center center; /* 水平居中和垂直居中 */
   background-repeat: no-repeat; /* 防止背景图片重复 */
   background-size: cover; /* 使背景图片覆盖整个容器，保持其纵横比 */
 }
 
 .footer {
-  background-color: #504E56;
+  background-color: #504e56;
   width: 100%;
   height: 100px; /* 设置底部展示区域的高度，可根据需要调整 */
   position: fixed;
@@ -25,19 +25,18 @@ body {
   bottom: 10px; /* 距离底部的距离，可根据需要调整 */
   right: 30px; /* 距离右侧的距离，可根据需要调整 */
   font-size: 14px; /* 设置文案的字体大小，可根据需要调整 */
-  color: #D3D3D4; /* 设置文案的颜色 */
+  color: #d3d3d4; /* 设置文案的颜色 */
   text-align: right; /* 使文案右对齐 */
   white-space: nowrap; /* 防止文案换行 */
 }
 
-
 .container {
   height: 300px;
   width: 400px;
-  background-color: #FFFFFF;
-  border: 1px solid #CCCCCC;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   padding: 20px;
   /*max-width: 400px;*/
   position: absolute;
@@ -47,7 +46,7 @@ body {
 }
 
 .navbar {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 100%;
   height: 60px; /* 设置导航栏高度，可根据需要调整 */
   position: fixed;
@@ -65,13 +64,11 @@ body {
   /*margin-top: 15px; !* 设置 logo 距离顶部的距离 *!*/
 }
 
-
 .left-content {
   position: absolute;
   top: 50%;
   left: 50px;
 }
-
 
 .left-content {
   position: absolute;
@@ -83,7 +80,6 @@ body {
 .left-image {
   max-width: 100%; /* 使图片自适应容器宽度 */
 }
-
 
 .text-container {
   position: absolute;
@@ -105,8 +101,6 @@ body {
   margin: 0;
 }
 
-
-
 h1 {
   color: #000000;
   font-size: 18px;
@@ -114,8 +108,6 @@ h1 {
   text-align: left;
   text-decoration: none;
 }
-
-
 
 form {
   display: flex;
@@ -133,41 +125,10 @@ label {
   width: 100%;
 }
 
-input[type=text],
-input[type=password] {
-  border: 1px solid #CCCCCC;
-  border-radius: 3px;
-  box-sizing: border-box;
-  height: 60px;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-  font-size: 16px;
-  padding: 5px 5px 5px 10px; /* 上 右 下 左 的边距值 */
-}
-
-input[type=submit] {
-  background-color: #FF0000;
-  border: none;
-  border-radius: 3px;
-  color: #FFFFFF;
-  cursor: pointer;
-  font-size: 16px;
-  height: 40px;
-  margin-top: 20px;
-  width: 100%;
-}
-
-input[type=submit]:hover {
-  background-color: #CC0000;
-}
-
-
 .g2-mfa-submit-button {
-  background: #CC0000!important;
-  border-color: #CC0000!important;
+  background: #cc0000 !important;
+  border-color: #cc0000 !important;
 }
-
 
 .chase-wrapper {
   width: 60px;
@@ -239,4 +200,105 @@ input[type=submit]:hover {
   0% {
     transform: scale(1);
   }
+}
+
+.mfa-root {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(248, 249, 255, 100);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mfa-container {
+  font-family: sans-serif;
+  box-shadow: 0 0 60px rgba(84, 89, 104, 0.05);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 456px;
+  min-height: 314px;
+  box-sizing: border-box;
+  padding: 64px 54px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.authing-g2-input-form,
+.authing-g2-sumbit-form {
+  width: 100%;
+}
+
+.authing-g2-input {
+  border: 1px solid #f5f6f7;
+  border-radius: 4px;
+  background: #f5f6f7;
+  padding: 6.5px 11px;
+  font-size: 16px;
+}
+
+.authing-g2-input:hover {
+  background-color: #eeeff1;
+}
+.authing-g2-input:focus {
+  background: #ffffff;
+  border-color: #618eff;
+}
+
+.authing-g2-input input {
+  font-size: 14px !important;
+  height: 0;
+  background-color: #f5f6f7;
+  padding: 1em 0.5em !important;
+  background-clip: content-box !important;
+  color: rgba(0,0,0,.85);
+}
+
+.ant-input::placeholder {
+  font-size: 14px;
+  line-height: 18px;
+  color: #c8c9cc;
+}
+
+.ant-btn-primary {
+  background: #215ae5;
+  border-radius: 4px;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  margin-top: 32px;
+}
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  color: #fff;
+  background: #497ef2 !important;
+  border-color: #497ef2;
+}
+
+.ant-input-prefix {
+  margin-right: 0;
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+.g2-icon {
+  font-size: 16px;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+}
+
+.ant-input-password-icon{
+  color: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
