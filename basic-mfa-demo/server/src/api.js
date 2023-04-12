@@ -5,21 +5,25 @@ const {authingManagementClient, appId, userPoolId, host, token } = require('./au
 
 const router = express.Router();
 
-
 const triggerMFA = async (username) => {
-  const url = `${host}/api/v3/get-mfa-trigger-data`
-  console.log(url);
-  const { data: mfaTriggerData } = await axios.get(url, {
-    params: {
-      appId,
-      userId: username,
-      userIdType: 'username'
-    },
-    headers: {
-      'x-authing-userpool-id': userPoolId,
-      authorization: token
-    }
-  })
+  // const url = `${host}/api/v3/get-mfa-trigger-data`
+  // console.log(url);
+  // const { data: mfaTriggerData } = await axios.get(url, {
+  //   params: {
+  //     appId,
+  //     userId: username,
+  //     userIdType: 'username'
+  //   },
+  //   headers: {
+  //     'x-authing-userpool-id': userPoolId,
+  //     authorization: token
+  //   }
+  // })
+  const mfaTriggerData = await authingManagementClient.getMfaTriggerData({
+    appId: appId,
+    userId: username,
+    userIdType: 'username'
+  });
   return mfaTriggerData.data
 }
 

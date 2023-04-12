@@ -1,10 +1,9 @@
-const { ManagementClient } = require('authing-js-sdk')
+const { ManagementClient } = require('authing-node-sdk')
 const { token, appId, host, userPoolId, accessKeyId, accessKeySecret, secret} = require('./config.json')
 
 const authingManagementClient = new ManagementClient({
-  userPoolId,
-  secret,
-  host,
+  accessKeyId,
+  accessKeySecret
 })
 
 module.exports.authingManagementClient = authingManagementClient
