@@ -22,12 +22,14 @@ export default function LoginForm() {
     username?: string;
     password?: string;
   }>({});
+  const [loading, setLoading] = useState(false);
+
   const history = useHistory();
 
   const onSubmit = (event: any) => {
     // event.preventDefault();
     //@ts-ignore
-    window.setLoading(true);
+    setLoading(true);
     request
       .post("/api/login")
       .send({
@@ -36,7 +38,7 @@ export default function LoginForm() {
       })
       .end((err: any, res: any) => {
         //@ts-ignore
-        window.setLoading(false);
+        setLoading(false);
         if (err) {
           alert("username or password error");
         }
@@ -121,7 +123,7 @@ export default function LoginForm() {
             />
           </Form.Item>
           <Form.Item className="authing-g2-sumbit-form">
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={loading}>
               登录
             </Button>
           </Form.Item>
