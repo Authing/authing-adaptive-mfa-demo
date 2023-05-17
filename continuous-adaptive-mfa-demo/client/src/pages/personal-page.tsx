@@ -5,16 +5,15 @@ import { AuthenticationClient } from 'authing-js-sdk'
 import Cookies from 'js-cookie'
 
 Cookies.set('foo', 'bar')
-const appId = '6421857cd86fbc2dcff956ec'
+const appId = '644ccb3a237085bf7c3b57f4'
 const appHost = 'https://console.wh.authing-inc.co'
-const userPoolId = '6418492c9dc4601eea005d02'
+const userPoolId = '644795124e79ca8a0fb9b281'
 const subscribeHost = 'wss://events.wh.authing-inc.co'
 const authenticationClient = new AuthenticationClient({
     appId,
     appHost,
     subscribeHost,
     userPoolId,
-    reconnect: 3
   });
   
 export default function PersonalPage() {
@@ -27,8 +26,11 @@ export default function PersonalPage() {
       return
     }
     authenticationClient.mfa.subscribe(
-      'authing.security.mfa?userIdentifier=' + loginInfo.username,
+      'authing.security.mfa?user=' + loginInfo.username,
       (mfaData) => {
+        if(typeof mfaData === 'string') {
+          mfaData = JSON.parse(mfaData)
+        }
         console.log('mfaData: ', mfaData);
         if(mfaData.applicationMfa.length == 0) {
           return

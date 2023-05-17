@@ -41,47 +41,6 @@ const login = async (req, res) => {
   }
 }
 
-const getMode = async () => {
-  const app = await authingManagementClient.applications.findById(appId)
-  return app.mfaType
-}
-
-const triggerMFA = async (username, req, ueba) => {
-  const mode = await getMode()
-  if (mode === 'simple') {
-    const url = 'http://core.wh.authing-inc.co/api/v3/mfa-trigger-data'
-    const { data: mfaTriggerData } = await axios.get(url, {
-      params: {
-        appId,
-        userId: username,
-        userIdType: 'username'
-      },
-      headers: {
-        'x-authing-userpool-id': userPoolId,
-        authorization: token
-      }
-    })
-    console.log(mfaTriggerData.data.applicationMfa.length);
-    console.log(JSON.stringify(mfaTriggerData.data));
-    return mfaTriggerData.data
-  }
-  if (mode === 'workflow') {
-
-    console.log('ueba', ueba);
-    // TODO: public/service
-    const res = await axios.post('https://console.wh.authing-inc.co/public/service/1fa2078b-dc97-4e16-8e46-2acb5a727257',
-      {
-        "query": {
-        },
-        "headers": {
-        },
-        "body": ueba
-      }
-    )
-    return res.data.data.output
-  }
-}
-
 router.post('/login', async function (req, res) {
   try {
     const loginRes = await login(req, res)
@@ -94,20 +53,12 @@ router.post('/login', async function (req, res) {
       user,
       ueba
     } = loginRes
-    const mfaTriggerData = await triggerMFA(user.username, req, ueba)
     
-    if (mfaTriggerData.applicationMfa.length) {
-      res.send({
-        status: false,
-        mfaTriggerData
-      });
-    } else {
-      res.cookie('token', JSON.stringify(user));
-      res.send({
-        status: true,
-        user: user
-      });
-    }
+    res.cookie('token', JSON.stringify(user));
+    res.send({
+      status: true,
+      user: user
+    });
   } catch (error) {
     console.log(error);
   }

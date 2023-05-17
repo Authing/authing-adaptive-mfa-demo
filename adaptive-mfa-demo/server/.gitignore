@@ -4,3 +4,4 @@ node_modules
 .DS_Store
 dist
 .angular
+server/src/config.json

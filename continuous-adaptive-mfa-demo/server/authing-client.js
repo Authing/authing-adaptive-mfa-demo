@@ -1,13 +1,7 @@
-const { MetadataManagementClient } = require('../authing-component/metadata-sdk/dist');
+const { MetadataManagementClient } = require('authing-node-sdk');
 const { ManagementClient } = require('authing-js-sdk')
+const { token, appId, host, userPoolId, accessKeyId, accessKeySecret, secret, modelId} = require('./config.json')
 
-const appId = '6421c2b9ce49522bfc07a3f2';
-const host = 'https://console.wh.authing-inc.co';
-const modelId = '641a7e63ee46aeaf49e39f4d';
-const userPoolId = '6418492c9dc4601eea005d02';
-const accessKeyId = '6418492c9dc4601eea005d02';
-const accessKeySecret = 'e24e2e217ba43be0b4762fe08aff9f8c';
-const secret = 'e24e2e217ba43be0b4762fe08aff9f8c';
 const authingMetadataManagementClient = new MetadataManagementClient({
     accessKeyId,
     accessKeySecret,
