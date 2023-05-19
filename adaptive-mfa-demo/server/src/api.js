@@ -11,11 +11,10 @@ const login = async (req, res) => {
   const userPasswordValid = user?.password === password
   if (userPasswordValid) {
     const ueba = {
-      "a": "a",
-      "b": "b",
-      behaviorType: 'login',
-      behaviorResult: 'login_success',
-      originalIdentity: username
+      behaviorResult: "login_success",
+      originalIdentity: username,
+      behaviorType: "login",
+      ip: "127.0.5.19"
     }
     const mfaTriggerData = await triggerMFA(ueba)
     return {
@@ -25,23 +24,21 @@ const login = async (req, res) => {
   } else {
     if(user) {
       const ueba = {
-        "a": "a",
-        "b": "b",
         behaviorType: 'login',
-        behaviorResult: 'login_failed_by_password',
-        originalIdentity: username
+        behaviorResult: 'account_wrong',
+        originalIdentity: username,
+        ip: "127.0.5.19"
       }
-      await triggerMFA(ueba)
+      triggerMFA(ueba)
       console.log(ueba);
     } else {
       const ueba = {
-        "a": "a",
-        "b": "b",
         behaviorType: 'login',
-        behaviorResult: 'login_failed_by_account',
-        originalIdentity: username
+        behaviorResult: 'account_wrong',
+        originalIdentity: username,
+        ip: "127.0.5.19"
       }
-      await triggerMFA(ueba)
+      triggerMFA(ueba)
       console.log(ueba);
     }
     res.send(400)
@@ -51,16 +48,25 @@ const login = async (req, res) => {
 const triggerMFA = async (ueba) => {
   console.log('ueba', ueba);
   // TODO: public/service
-  const res = await axios.post('https://console.wh.authing-inc.co/public/service/c523d7e6-ea1e-4a55-8a8a-6368af79d10a',
+  const res = await axios.post('https://console.wh.authing-inc.co/public/service/4428ece3304f431581eb7738125e5582',
     {
-      "query": {
-      },
-      "headers": {
-      },
+      "query": {},
+      "headers": {},
       "body": ueba
+    },
+    {
+      headers: {
+        "content-type": "application/json",
+        "x-authing-userpool-id": "644795124e79ca8a0fb9b281"
+      }
     }
   )
-  return res.data.data.output
+  if(res.data?.data?.output) {
+    console.log(res.data);
+    return res.data.data.output
+  }
+  console.log(res.data);
+  // return res.data.data.output
 }
 
 router.post('/login', async function (req, res) {
@@ -77,7 +83,8 @@ router.post('/login', async function (req, res) {
     } = loginRes
     console.log(mfaTriggerData);
     
-    if (mfaTriggerData.applicationMfa.length) {
+    if (mfaTriggerData?.applicationMfa?.length) {
+      console.log(JSON.stringify(mfaTriggerData.applicationMfa));
       res.send({
         status: false,
         mfaTriggerData
@@ -92,7 +99,6 @@ router.post('/login', async function (req, res) {
   } catch (error) {
     console.log(error);
   }
-
 });
 
 router.get('/personal', function (req, res) {

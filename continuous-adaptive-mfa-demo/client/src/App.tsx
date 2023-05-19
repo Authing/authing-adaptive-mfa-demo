@@ -12,7 +12,7 @@ export default function App() {
   return (
     <AuthingMFAProvider
       host="https://console.wh.authing-inc.co"
-      appId="6421c2b9ce49522bfc07a3f2"
+      appId="644ccb3a237085bf7c3b57f4"
       lang="en-US"
       // host="https://console.mfa.authing-inc.co"
       // appId="641ae676b72ee5baf98d7345"

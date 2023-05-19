@@ -21,3 +21,4 @@ module.exports.authingManagementClient = authingManagementClient
 module.exports.ueba = ueba
 module.exports.appId = appId
 module.exports.userPoolId = userPoolId
+module.exports.token = token

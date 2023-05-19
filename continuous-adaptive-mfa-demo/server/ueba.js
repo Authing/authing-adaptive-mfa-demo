@@ -10,27 +10,21 @@ const generateUEBAData = (req) => {
     }
 }
 
-const mockData = {
-    appId,
-    ip: '117.133.11.139',
-    ua: 'ua',
-    behaviorType: 'login',
-    actionType: 'Read',
-    loginType: 'wechat',
-    someKey: '这是自定义的',
-    originalIdentity: "lyy",
-    browserType: 'Chrome',
-    originalIdentity: "lyy",
-    behaviorResult:'account_wrong',
-    someKey: "a",
-}
+// const mockData = {
+//     appId,
+//     behaviorType: 'login',
+//     behaviorResult: 'account_wrong',
+//     originalIdentity: username,
+//     ip: "127.0.5.19"
+// }
+
 const uebaCapture = async (req, data) => {
-    // const baseData = generateUEBAData(req)
-    // const res = await ueba.capture({
-    //     ...baseData,
-    //     ...data
-    // })
-    const res = await ueba.capture(mockData)
+    const baseData = generateUEBAData(req)
+    const res = await ueba.capture({
+        ...baseData,
+        ...data
+    })
+    // const res = await ueba.capture(mockData)
     console.log(res.data);
     return res.data
 }

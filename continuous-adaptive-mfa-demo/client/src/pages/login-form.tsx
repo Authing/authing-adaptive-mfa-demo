@@ -20,7 +20,8 @@ export default function LoginForm() {
         //@ts-ignore
         window.setLoading(false)
         if (err) {
-          alert('密码输入错误')
+          // alert('密码输入错误')
+          return
         };
         console.log(res);
         // if(res)

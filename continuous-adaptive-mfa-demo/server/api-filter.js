@@ -1,6 +1,6 @@
 const { uebaCapture } = require('./ueba')
 const axios = require('axios')
-const {authingManagementClient, userPoolId} = require('./authing-client')
+const {authingManagementClient, userPoolId, token: authingToken} = require('./authing-client')
 
 module.exports = async (req, res, next) => {
     console.log('Time:', Date.now())
@@ -21,12 +21,16 @@ module.exports = async (req, res, next) => {
             userIdType: 'username',
         },
         headers: {
-            "x-authing-userpool-id": userPoolId
+            "x-authing-userpool-id": userPoolId,
+            authorization: authingToken
         }
     })
     if(authingUser.data) {
         res.send({
-            mfaTriggerData: authingUser.data
+            mfaTriggerData: {
+                ...authingUser.data,
+                applicationMfa: [ { mfaPolicy: 'SMS', sort: 1, status: 1 } ],
+            }
         })
         return
     }
