@@ -5,18 +5,6 @@ import Cookies from 'js-cookie'
 // import { AuthenticationClient } from 'authing-js-sdk'
 import { useHistory } from 'react-router-dom'
 
-// const appId = '64203d17f400d3d1ee957a4b'
-// const appHost = 'https://console.wh.authing-inc.co'
-// const userPoolId = '6418492c9dc4601eea005d02'
-// const subscribeHost = 'wss://events.wh.authing-inc.co'
-// const authenticationClient = new AuthenticationClient({
-//     appId,
-//     appHost,
-//     subscribeHost,
-//     userPoolId,
-//     reconnect: 3
-//   });
-
 export default function Layout(props: any) {
   const history = useHistory()
 

@@ -29,10 +29,11 @@ export default function MFA() {
     authingMFA.on('unmount', function () {
       console.log('Authing MFA unmount')
     })
-    
+    //call csharp api
     authingMFA.on('success', function (code, data) {
       document.cookie = "token="+JSON.stringify(data)
-      history.push('/personal')
+      console.log(data.token);
+      history.push('/personal') //data.token
       console.log('Authing MFA success: ', code, data)
     })
     

@@ -9,14 +9,15 @@ import RouterComponent from './router'
 import './App.css'
 
 import { useGuardIconfont } from './IconFont/useGuardIconfont'
+const { appId, host} = require('../config.json')
 
 export default function App() {
   useGuardIconfont("https://files.authing.co/authing-user-portal")
 
   return (
     <AuthingMFAProvider
-      host="https://console.pre.authing.cn"
-      appId="642e7b26bf3d0c1a9a833bbd"
+      host={ host }
+      appId= { appId }
       lang="en-US"
     >
       <RouterComponent></RouterComponent>

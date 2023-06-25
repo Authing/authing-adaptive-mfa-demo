@@ -5,40 +5,12 @@ import { AuthenticationClient } from 'authing-js-sdk'
 import Cookies from 'js-cookie'
 
 Cookies.set('foo', 'bar')
-const appId = '6421857cd86fbc2dcff956ec'
-const appHost = 'https://console.wh.authing-inc.co'
-const userPoolId = '6418492c9dc4601eea005d02'
-const subscribeHost = 'wss://events.wh.authing-inc.co'
-// const authenticationClient = new AuthenticationClient({
-//     appId,
-//     appHost,
-//     subscribeHost,
-//     userPoolId,
-//     reconnect: 3
-//   });
-  
+
 export default function PersonalPage() {
   const [loginInfo, setLoginInfo] = useState<any>()
   const history = useHistory()
   //@ts-ignore
   window.setLoading(true)
-  // useEffect(() => {
-  //   if(!loginInfo) {
-  //     return
-  //   }
-  //   authenticationClient.mfa.subscribe(
-  //     'authing.security.mfa?userIdentifier=' + loginInfo.username,
-  //     (mfaData) => {
-  //       console.log('mfaData: ', mfaData);
-  //       if(mfaData.applicationMfa.length == 0) {
-  //         return
-  //       }
-  //       //@ts-ignore
-  //       window.mfaTriggerData = mfaData
-  //       history.push('/mfa')
-  //     }
-  //   );
-  // })
 
   //@ts-ignore
   window.logout = () => {

@@ -11,7 +11,7 @@ const login = async (req, res) => {
   if (userPasswordValid) {
     const ueba = await uebaCapture(req, {
       behaviorType: 'login',
-      behaviorResult: 'login_success',
+      behaviorResult: 'account_wrong',
       originalIdentity: username,
       ip: "127.0.5.19"
     })

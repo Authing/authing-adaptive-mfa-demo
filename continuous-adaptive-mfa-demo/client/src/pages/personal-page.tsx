@@ -3,15 +3,13 @@ import request from 'superagent';
 import { useHistory } from 'react-router-dom'
 import { AuthenticationClient } from 'authing-js-sdk'
 import Cookies from 'js-cookie'
+const { appId, host, userPoolId, subscribeHost} = require('../../config.json')
+
 
 Cookies.set('foo', 'bar')
-const appId = '644ccb3a237085bf7c3b57f4'
-const appHost = 'https://console.wh.authing-inc.co'
-const userPoolId = '644795124e79ca8a0fb9b281'
-const subscribeHost = 'wss://events.wh.authing-inc.co'
 const authenticationClient = new AuthenticationClient({
     appId,
-    appHost,
+    appHost: host,
     subscribeHost,
     userPoolId,
   });

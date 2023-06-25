@@ -1,6 +1,5 @@
-const { uebaCapture } = require('./ueba')
 const axios = require('axios')
-const {authingManagementClient, userPoolId, token: authingToken} = require('./authing-client')
+const { userPoolId, token: authingToken, host} = require('./authing-client')
 
 module.exports = async (req, res, next) => {
     console.log('Time:', Date.now())
@@ -15,14 +14,14 @@ module.exports = async (req, res, next) => {
     }
     const user = JSON.parse(token)
     req.user = user
-
-    const {data: authingUser} = await axios.get('https://console.wh.authing-inc.co/api/v3/get-mfa-status', { params: {
+    const {data: authingUser} = await axios.get(`${host}/api/v3/get-mfa-status`, { params: {
             userId: user.username,
             userIdType: 'username',
         },
         headers: {
             "x-authing-userpool-id": userPoolId,
-            authorization: authingToken
+            authorization: authingToken,
+            // Cookie: Cookie,
         }
     })
     if(authingUser.data) {
@@ -35,9 +34,5 @@ module.exports = async (req, res, next) => {
         return
     }
     next()
-    // uebaCapture(req, {
-    //     behaviorType: 'access',
-    //     behaviorResult: 'success',
-    //     originalIdentity: user.username
-    // })
+
 }

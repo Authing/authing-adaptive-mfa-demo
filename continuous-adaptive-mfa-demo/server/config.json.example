@@ -1,10 +1,8 @@
 {
-    "token": "xxxxxxxxx",
-    "appId": "xxx",
-    "host": "https://console.xxxxxxxxx.co",
-    "userPoolId": "xxxxxxxxx",
-    "accessKeyId": "xxxxxxxxx",
-    "accessKeySecret": "xxxxxxxxx",
-    "secret": "xxxxxxxxx",
-    "modelId": ""
+    "token": "",
+    "appId": "",
+    "host": "",
+    "userPoolId": "",
+    "accessKeySecret": "",
+    "modelId": "ueba"
 }

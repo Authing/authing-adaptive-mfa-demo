@@ -31,6 +31,7 @@ export default function MFA() {
     })
     
     authingMFA.on('success', function (code, data) {
+      //如果这里报错，你应该现登录一下 authing 就行了
       console.log("token="+atob(data.token.split('.')[1]));
       document.cookie = "token="+atob(data.token.split('.')[1])
       history.push('/personal')

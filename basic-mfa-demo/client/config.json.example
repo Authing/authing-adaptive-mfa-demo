@@ -1,7 +1,6 @@
 {
-    "token": "",
     "appId": "",
-    "host": "",
+    "host": "https://console.authing.cn",
     "userPoolId": "",
     "accessKeySecret": ""
 }

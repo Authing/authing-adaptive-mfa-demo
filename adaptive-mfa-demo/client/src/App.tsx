@@ -8,14 +8,14 @@ import RouterComponent from './router'
 
 import './App.css'
 
+const { appId, host} = require('../config.json')
+
 export default function App() {
   return (
     <AuthingMFAProvider
-      host="https://console.wh.authing-inc.co"
-      appId="644ccb3a237085bf7c3b57f4"
+      host= {host}
+      appId= {appId}
       lang="en-US"
-      // host="https://console.mfa.authing-inc.co"
-      // appId="641ae676b72ee5baf98d7345"
     >
       <RouterComponent></RouterComponent>
     </AuthingMFAProvider>
