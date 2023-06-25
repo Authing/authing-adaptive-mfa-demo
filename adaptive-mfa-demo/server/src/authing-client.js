@@ -1,6 +1,6 @@
 const { MetadataManagementClient } = require('authing-node-sdk');
 const { ManagementClient } = require('authing-js-sdk')
-const { token, appId, host, userPoolId, accessKeyId, accessKeySecret, secret, modelId} = require('./config.json')
+const { token, appId, host, userPoolId, accessKeyId, accessKeySecret, secret} = require('./config.json')
 const authingMetadataManagementClient = new MetadataManagementClient({
     accessKeyId,
     accessKeySecret,

@@ -4,6 +4,8 @@ const { uebaCapture } = require('./ueba')
 
 const express = require('express');
 const router = express.Router();
+const { userPoolId } = require('./authing-client')
+
 
 const login = async (req, res) => {
   const { username, password } = req.body
@@ -11,7 +13,7 @@ const login = async (req, res) => {
   const userPasswordValid = user?.password === password
   if (userPasswordValid) {
     const ueba = {
-      behaviorResult: "login_success",
+      behaviorResult: "account_wrong",
       originalIdentity: username,
       behaviorType: "login",
       ip: "127.0.5.19"
@@ -48,7 +50,8 @@ const login = async (req, res) => {
 const triggerMFA = async (ueba) => {
   console.log('ueba', ueba);
   // TODO: public/service
-  const res = await axios.post('https://console.wh.authing-inc.co/public/service/4428ece3304f431581eb7738125e5582',
+  //这里链接地址去控制台获取
+  const res = await axios.post('https://console.wh.authing-inc.co/public/service/18a103910c4c4625be2965754033c7b9',
     {
       "query": {},
       "headers": {},
@@ -57,7 +60,7 @@ const triggerMFA = async (ueba) => {
     {
       headers: {
         "content-type": "application/json",
-        "x-authing-userpool-id": "644795124e79ca8a0fb9b281"
+        "x-authing-userpool-id": `${ userPoolId }`
       }
     }
   )
